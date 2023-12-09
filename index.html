@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="msm.png" type="icon">
+</head>
+<body>
+    <header>
+        <h2 id="clgname">M S M COLLEGE OF SCIENCE,COMMERCE AND ARTS</h2>
+        <h1>Welcome to Admission Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="admission_form.html">Admission Form</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="close">&times;</span>
+            <p>Hurry up! Admission closing soon.</p> 
+            <div id="days-left"></div>
+        </div>
+    </div>
+   
+
+    <main>
+        <section class="hero">
+            <h2 >Explore Our Programs and Apply Now!</h2>
+            <a href="admission_form.html" class="cta-button">Apply Now</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Admission Portal. All rights reserved.</p>
+    </footer>
+    <script >
+       const popup = document.getElementById('popup');
+const closeBtn = document.getElementById('close');
+
+// Get the current date
+const currentDate = new Date();
+
+// Set the closing date of admission (you can adjust this date as needed)
+const closingDate = new Date('2023-09-10');
+
+// Calculate the time difference in milliseconds
+const timeDiff = closingDate - currentDate;
+
+// Calculate the number of days left
+const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+// Check if admission is closing soon (within 7 days)
+if (daysLeft <= 7 && daysLeft >= 0) {
+    // Display the popup
+    popup.style.display = 'block';
+    // Find the days-left element and update its content
+    const daysLeftElement = document.getElementById('days-left');
+    daysLeftElement.textContent = `Only ${daysLeft} days left until admission closes!`;
+}
+
+// Close the popup when the close button is clicked
+closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+
+    </script>>
+        
+</body>
+</html>

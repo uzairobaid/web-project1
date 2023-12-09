@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form | Admission Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="msm.png" type="icon">
+    
+</head>
+<body>
+    
+        
+    <header >
+        <h1>Admission Form</h1>
+        <nav >
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="admission_form.html">Admission Form</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="admission-form">
+            <form onsubmit="return validateForm()">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br><br>
+                <label for="dob">Date Of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+               
+               <br><br>
+                <label for="gender">Gender:</label>
+                
+                <input type="radio" id="gender" name="gender" >Male
+                <input type="radio" id="gender" name="gender" >Female
+                <br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="abc@gmail.com" required>
+                <br><br>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                   <br><br>
+                   <h3>Education</h3>
+
+                  <label for="Highschool">High School Name:</label>
+                  <input type="text" id="Highschool" name="Highschool" required>
+                  <label for="board">Syllabus</label>
+                  <select id="board" name="board">
+                    <option selected>--Board of education--</option>
+                    <option value="state">State board</option>
+                    <option value="CBSE">CBSE</option>
+                    <option value="ICSE">ICSE</option>
+                    <option value="others">Others</option>
+                  </select>
+                  <label for="percentage">class X percentage:</label>
+                  <input type="number" id="percentage" name="percentage">
+                  <br><br>
+                <label for="course">Select Course:</label>
+                <select id="course" name="course">
+                    <option selected>--SELECT YOUR COURSE--</option>
+                    <option value="Science">Science</option>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Arts">Humanities/Arts</option>
+                    
+                </select>
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="2" required></textarea>
+
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Admission Portal. All rights reserved.</p>
+    </footer>
+
+    
+<script>
+    // Function to validate the form
+    function validateForm() {
+        // Get form elements by their IDs
+        const nameInput = document.getElementById('name');
+        const dobInput = document.getElementById('dob');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const highschoolInput = document.getElementById('Highschool');
+        const percentageInput = document.getElementById('percentage');
+
+        // Regular expression pattern for a valid email
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        // Check if the name is not empty
+        if (nameInput.value.trim() === '') {
+            alert('Please enter your full name.');
+            nameInput.focus();
+            return false;
+        }
+
+        // Check if the date of birth is not empty
+        if (dobInput.value.trim() === '') {
+            alert('Please enter your date of birth.');
+            dobInput.focus();
+            return false;
+        }
+
+        // Check if the email is valid
+        if (!emailPattern.test(emailInput.value)) {
+            alert('Please enter a valid email address.');
+            emailInput.focus();
+            return false;
+        }
+
+        // Check if the phone number is not empty
+        if (phoneInput.value.trim() === '') {
+            alert('Please enter your phone number.');
+            phoneInput.focus();
+            return false;
+        }
+
+        // Check if the high school name is not empty
+        if (highschoolInput.value.trim() === '') {
+            alert('Please enter your high school name.');
+            highschoolInput.focus();
+            return false;
+        }
+
+        // Check if the percentage is a number between 0 and 100
+        const percentage = parseFloat(percentageInput.value);
+        if (isNaN(percentage) || percentage < 0 || percentage > 100) {
+            alert('Please enter a valid percentage between 0 and 100.');
+            percentageInput.focus();
+            return false;
+        }
+
+        // If all validation checks pass, the form is valid
+        return true;
+    }
+</script>
+
+    
+</body>
+</html>
